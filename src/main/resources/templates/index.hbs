@@ -1,0 +1,41 @@
+{{#partial "navbar"}}
+    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+    <li class="nav-item active"><a class="nav-link" href="/heroes/new">New Hero</a></li>
+    <li class="nav-item"><a class="nav-link" href="/squads/new">New Squad</a></li>
+    <li class="nav-item"><a class="nav-link" href="/heroes">Heroes & Squads</a></li>
+    <li class="nav-item"><a class="nav-link" href="/faqs">Contact</a></li>
+{{/partial}}
+
+{{#partial "content"}}
+    {{#if uniqueId}}
+        <div id="returning-agent">
+            <h2 class="text-center text-info"><u> WELCOME, {{uniqueId}}</u></h2>
+
+            <h4 class="text-center text-success"><b>HEROS ARENA SUMMARY</b></h4>
+            <div class="row">
+                <div class="col-md-3"><p class="text-info">Heroes Registered: {{totalHeroes}}</p></div>
+                <div class="col-md-3"><p class="text-info">Squads Present: {{totalSquads}}</p></div>
+                <div class="col-md-3"><p class="text-info">Heroes and squads: {{squadfullHeroes}}</p></div>
+                <div class="col-md-3"><p class="text-info">Heroes without squads: {{squadlessHeroes}}</p></div>
+            </div>
+
+            
+
+        </div>
+    {{else}}
+        <div id="session-form">
+            <h3 class="text-center">NEW HERO</h3>
+            <div class="text-center">
+            <form action="/success" method="post">
+                <label for="uniqueId" >Name</label>
+                <input type="text" id="uniqueId" name="uniqueId" class="form-control"
+                       placeholder="enter your hero name please?">
+                <button class="btn btn-outline-secondary">ADD</button>
+            </form>
+        </div>
+        </div>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}
